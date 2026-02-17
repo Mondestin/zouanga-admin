@@ -5,6 +5,7 @@ import { parseAsInteger, useQueryState } from 'nuqs';
 import { useDataTable } from '@/hooks/use-data-table';
 import { ReusableDataTable } from './reusable-data-table';
 import { ReusableTableToolbar } from './reusable-table-toolbar';
+import type { ReactNode } from 'react';
 
 interface ReusableTableWrapperProps<TData, TValue> {
   data: TData[];
@@ -23,6 +24,7 @@ interface ReusableTableWrapperProps<TData, TValue> {
   };
   onSearch?: (value: string) => void;
   onExport?: () => void;
+  toolbarRightSlot?: ReactNode;
   containerClassName?: string;
   tableContainerClassName?: string;
 }
@@ -39,6 +41,7 @@ export function ReusableTableWrapper<TData, TValue>({
   paginationText,
   onSearch,
   onExport,
+  toolbarRightSlot,
   containerClassName = 'rounded-lg border shadow-sm',
   tableContainerClassName = 'bg-white rounded-lg border-t-2'
 }: ReusableTableWrapperProps<TData, TValue>) {
@@ -67,6 +70,7 @@ export function ReusableTableWrapper<TData, TValue>({
           exportButtonColor={exportButtonColor}
           onSearch={onSearch}
           onExport={onExport}
+          rightSlot={toolbarRightSlot}
         />
         <div
           className={tableContainerClassName}

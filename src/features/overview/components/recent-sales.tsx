@@ -6,42 +6,43 @@ import {
   CardTitle,
   CardDescription
 } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 
-const salesData = [
+const incidentAlerts = [
   {
-    name: 'Olivia Martin',
-    email: 'olivia.martin@email.com',
+    name: 'Alerte deviation',
+    email: 'Itineraire PV-03',
     avatar: 'https://api.slingacademy.com/public/sample-users/1.png',
     fallback: 'OM',
-    amount: '+$1,999.00'
+    amount: 'Critique'
   },
   {
-    name: 'Jackson Lee',
-    email: 'jackson.lee@email.com',
+    name: 'Retard de prise en charge',
+    email: 'Itineraire HT-01',
     avatar: 'https://api.slingacademy.com/public/sample-users/2.png',
     fallback: 'JL',
-    amount: '+$39.00'
+    amount: 'Moderee'
   },
   {
-    name: 'Isabella Nguyen',
-    email: 'isabella.nguyen@email.com',
+    name: 'Signalement parent',
+    email: 'Itineraire DL-09',
     avatar: 'https://api.slingacademy.com/public/sample-users/3.png',
     fallback: 'IN',
-    amount: '+$299.00'
+    amount: 'Moderee'
   },
   {
-    name: 'William Kim',
-    email: 'will@email.com',
+    name: 'Validation KYC manquante',
+    email: 'Chauffeur en attente',
     avatar: 'https://api.slingacademy.com/public/sample-users/4.png',
     fallback: 'WK',
-    amount: '+$99.00'
+    amount: 'A traiter'
   },
   {
-    name: 'Sofia Davis',
-    email: 'sofia.davis@email.com',
+    name: 'Validation flotte',
+    email: 'Documents incomplets',
     avatar: 'https://api.slingacademy.com/public/sample-users/5.png',
     fallback: 'SD',
-    amount: '+$39.00'
+    amount: 'A traiter'
   }
 ];
 
@@ -49,22 +50,36 @@ export function RecentSales() {
   return (
     <Card className='h-full'>
       <CardHeader>
-        <CardTitle>Recent Sales</CardTitle>
-        <CardDescription>You made 265 sales this month.</CardDescription>
+        <CardTitle>Alertes et validations</CardTitle>
+        <CardDescription>
+          Incidents critiques et approbations chauffeurs/flottes en attente.
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <div className='space-y-8'>
-          {salesData.map((sale, index) => (
+          {incidentAlerts.map((alert, index) => (
             <div key={index} className='flex items-center'>
               <Avatar className='h-9 w-9'>
-                <AvatarImage src={sale.avatar} alt='Avatar' />
-                <AvatarFallback>{sale.fallback}</AvatarFallback>
+                <AvatarImage src={alert.avatar} alt='Avatar' />
+                <AvatarFallback>{alert.fallback}</AvatarFallback>
               </Avatar>
               <div className='ml-4 space-y-1'>
-                <p className='text-sm leading-none font-medium'>{sale.name}</p>
-                <p className='text-muted-foreground text-sm'>{sale.email}</p>
+                <p className='text-sm leading-none font-medium'>{alert.name}</p>
+                <p className='text-muted-foreground text-sm'>{alert.email}</p>
               </div>
-              <div className='ml-auto font-medium'>{sale.amount}</div>
+              <div className='ml-auto font-medium'>
+                <Badge
+                  variant={
+                    alert.amount === 'Critique'
+                      ? 'destructive'
+                      : alert.amount === 'Moderee'
+                        ? 'secondary'
+                        : 'outline'
+                  }
+                >
+                  {alert.amount}
+                </Badge>
+              </div>
             </div>
           ))}
         </div>

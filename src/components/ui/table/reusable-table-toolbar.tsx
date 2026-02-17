@@ -4,7 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { IconSearch, IconDownload } from '@tabler/icons-react';
 import type { Table } from '@tanstack/react-table';
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
 
 interface ReusableTableToolbarProps<TData> {
   table: Table<TData>;
@@ -13,6 +13,7 @@ interface ReusableTableToolbarProps<TData> {
   exportButtonColor?: string;
   onSearch?: (value: string) => void;
   onExport?: () => void;
+  rightSlot?: ReactNode;
 }
 
 export function ReusableTableToolbar<TData>({
@@ -21,7 +22,8 @@ export function ReusableTableToolbar<TData>({
   exportButtonText = 'Exporter ce tableau',
   exportButtonColor = '#01631b',
   onSearch,
-  onExport
+  onExport,
+  rightSlot
 }: ReusableTableToolbarProps<TData>) {
   const [searchValue, setSearchValue] = useState('');
 
@@ -52,6 +54,7 @@ export function ReusableTableToolbar<TData>({
           className='pl-8'
         />
       </div>
+      {rightSlot}
       <div className='flex gap-2 ml-auto'>
         <Button
           onClick={handleExport}

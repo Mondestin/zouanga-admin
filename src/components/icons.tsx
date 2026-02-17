@@ -38,7 +38,15 @@ import {
   IconUsers,
   IconShieldCheck,
   IconBug,
-  IconMenu
+  IconMenu,
+  IconCar,
+  IconBus,
+  IconSchool,
+  IconRoute,
+  IconMapPin,
+  IconRepeat,
+  IconAlertCircle,
+  IconUsersGroup
 } from '@tabler/icons-react';
 
 export type Icon = ComponentType<IconProps>;
@@ -81,5 +89,14 @@ export const Icons = {
   users: IconUsers,
   shield: IconShieldCheck,
   bug: IconBug,
-  question: IconHelpCircle
+  question: IconHelpCircle,
+  // New icons for better matching
+  parents: IconUsersGroup,
+  driver: IconCar,
+  fleet: IconBus,
+  school: IconSchool,
+  trip: IconRoute,
+  route: IconMapPin,
+  subscription: IconRepeat,
+  sos: IconAlertCircle
 };

@@ -20,7 +20,10 @@ const getInitials = (name: string) => {
 const StatusBadge = ({ status }: { status: User['status'] }) => {
   if (status === 'active') {
     return (
-      <Badge className='inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-green-100 text-green-700 hover:bg-green-200 shadow gap-1'>
+      <Badge
+        className='inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent hover:opacity-90 shadow gap-1'
+        style={{ backgroundColor: '#043535', color: '#ffffff' }}
+      >
         <CheckCircle2 className='w-3 h-3' />
         <span>Actif</span>
       </Badge>
@@ -94,7 +97,7 @@ export const columns: ColumnDef<User>[] = [
           className='h-9 w-9 hover:bg-destructive/10 hover:text-destructive'
         >
           <IconTrash className='h-4 w-4' />
-          <span className='sr-only'>Delete</span>
+          <span className='sr-only'>Supprimer</span>
         </Button>
       );
     }

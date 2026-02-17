@@ -20,36 +20,36 @@ import {
 } from '@/components/ui/chart';
 
 const chartData = [
-  { browser: 'chrome', visitors: 275, fill: 'var(--primary)' },
-  { browser: 'safari', visitors: 200, fill: 'var(--primary-light)' },
-  { browser: 'firefox', visitors: 287, fill: 'var(--primary-lighter)' },
-  { browser: 'edge', visitors: 173, fill: 'var(--primary-dark)' },
-  { browser: 'other', visitors: 190, fill: 'var(--primary-darker)' }
+  { browser: 'chrome', visitors: 275, fill: 'var(--chart-1)' },
+  { browser: 'safari', visitors: 200, fill: 'var(--chart-2)' },
+  { browser: 'firefox', visitors: 287, fill: 'var(--chart-3)' },
+  { browser: 'edge', visitors: 173, fill: 'var(--chart-4)' },
+  { browser: 'other', visitors: 190, fill: 'var(--chart-5)' }
 ];
 
 const chartConfig = {
   visitors: {
-    label: 'Visitors'
+    label: 'Visiteurs'
   },
   chrome: {
     label: 'Chrome',
-    color: 'var(--primary)'
+    color: 'var(--chart-1)'
   },
   safari: {
     label: 'Safari',
-    color: 'var(--primary)'
+    color: 'var(--chart-2)'
   },
   firefox: {
     label: 'Firefox',
-    color: 'var(--primary)'
+    color: 'var(--chart-3)'
   },
   edge: {
     label: 'Edge',
-    color: 'var(--primary)'
+    color: 'var(--chart-4)'
   },
   other: {
-    label: 'Other',
-    color: 'var(--primary)'
+    label: 'Autres',
+    color: 'var(--chart-5)'
   }
 } satisfies ChartConfig;
 
@@ -61,12 +61,12 @@ export function PieGraph() {
   return (
     <Card className='@container/card'>
       <CardHeader>
-        <CardTitle>Pie Chart - Donut with Text</CardTitle>
+        <CardTitle>Graphique circulaire - Donut avec texte</CardTitle>
         <CardDescription>
           <span className='hidden @[540px]/card:block'>
-            Total visitors by browser for the last 6 months
+            Total des visiteurs par navigateur sur les 6 derniers mois
           </span>
-          <span className='@[540px]/card:hidden'>Browser distribution</span>
+          <span className='@[540px]/card:hidden'>Repartition des navigateurs</span>
         </CardDescription>
       </CardHeader>
       <CardContent className='px-2 pt-4 sm:px-6 sm:pt-6'>
@@ -88,13 +88,13 @@ export function PieGraph() {
                   >
                     <stop
                       offset='0%'
-                      stopColor='var(--primary)'
-                      stopOpacity={1 - index * 0.15}
+                      stopColor={`var(--chart-${index + 1})`}
+                      stopOpacity={1}
                     />
                     <stop
                       offset='100%'
-                      stopColor='var(--primary)'
-                      stopOpacity={0.8 - index * 0.15}
+                      stopColor={`var(--chart-${index + 1})`}
+                      stopOpacity={0.8}
                     />
                   </linearGradient>
                 )
@@ -137,7 +137,7 @@ export function PieGraph() {
                           y={(viewBox.cy || 0) + 24}
                           className='fill-muted-foreground text-sm'
                         >
-                          Total Visitors
+                          Total visiteurs
                         </tspan>
                       </text>
                     );
@@ -150,12 +150,12 @@ export function PieGraph() {
       </CardContent>
       <CardFooter className='flex-col gap-2 text-sm'>
         <div className='flex items-center gap-2 leading-none font-medium'>
-          Chrome leads with{' '}
+          Chrome domine avec{' '}
           {((chartData[0].visitors / totalVisitors) * 100).toFixed(1)}%{' '}
           <IconTrendingUp className='h-4 w-4' />
         </div>
         <div className='text-muted-foreground leading-none'>
-          Based on data from January - June 2024
+          Base sur les donnees de Janvier a Juin 2024
         </div>
       </CardFooter>
     </Card>
