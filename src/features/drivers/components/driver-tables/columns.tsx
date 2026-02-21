@@ -22,6 +22,40 @@ import { IconDotsVertical } from '@tabler/icons-react';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
 
+function DriverActionsCell({ driver }: { driver: Driver }) {
+  const router = useRouter();
+  const isSuspended = driver.driverStatus === 'Suspendu';
+  const label = isSuspended ? 'Reactiver' : 'Suspendre';
+  return (
+    <DropdownMenu modal={false}>
+      <DropdownMenuTrigger asChild>
+        <Button variant='ghost' className='h-8 w-8 p-0'>
+          <span className='sr-only'>Ouvrir le menu</span>
+          <IconDotsVertical className='h-4 w-4' />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align='end'>
+        <DropdownMenuItem onClick={() => router.push(`/dashboard/drivers/${driver.id}`)}>
+          <CheckCircle2 className='mr-2 h-4 w-4' />
+          Voir details
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => toast.info(`KYC: ${driver.kycStatus} pour ${driver.name}`)}>
+          <CheckCircle2 className='mr-2 h-4 w-4' />
+          Voir KYC
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() =>
+            toast.success(`${label} le compte de ${driver.name} (action de demonstration)`)
+          }
+        >
+          <CheckCircle2 className='mr-2 h-4 w-4' />
+          {label}
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+
 const getInitials = (name: string) => {
   return name
     .split(' ')
@@ -215,49 +249,6 @@ export const columns: ColumnDef<Driver>[] = [
   {
     id: 'actions',
     header: 'Actions',
-    cell: ({ row }) => {
-      const router = useRouter();
-      const isSuspended = row.original.driverStatus === 'Suspendu';
-      const label = isSuspended ? 'Reactiver' : 'Suspendre';
-
-      return (
-        <DropdownMenu modal={false}>
-          <DropdownMenuTrigger asChild>
-            <Button variant='ghost' className='h-8 w-8 p-0'>
-              <span className='sr-only'>Ouvrir le menu</span>
-              <IconDotsVertical className='h-4 w-4' />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align='end'>
-            <DropdownMenuItem
-              onClick={() =>
-                toast.info(`Voir details du chauffeur ${row.original.name} (action de demonstration)`)
-              }
-            >
-              <CheckCircle2 className='mr-2 h-4 w-4' />
-              Voir details
-            </DropdownMenuItem>
-            <DropdownMenuItem
-              onClick={() =>
-                toast.info(`KYC: ${row.original.kycStatus} pour ${row.original.name}`)
-              }
-            >
-              <CheckCircle2 className='mr-2 h-4 w-4' />
-              Voir KYC
-            </DropdownMenuItem>
-            <DropdownMenuItem
-              onClick={() =>
-                toast.success(
-                  `${label} le compte de ${row.original.name} (action de demonstration)`
-                )
-              }
-            >
-              <CheckCircle2 className='mr-2 h-4 w-4' />
-              {label}
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      );
-    }
+    cell: ({ row }) => <DriverActionsCell driver={row.original} />
   }
 ];

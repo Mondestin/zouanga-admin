@@ -5,7 +5,7 @@ import {
   CardTitle,
   CardDescription,
   CardAction,
-  CardFooter
+  CardContent
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { IconTrendingUp, IconUsers, IconUserCheck, IconUserX } from '@tabler/icons-react';
@@ -16,6 +16,7 @@ export default function UsersPage() {
   const activeUsers = mockUsers.filter((u) => u.status === 'active').length;
   const inactiveUsers = mockUsers.filter((u) => u.status === 'inactive').length;
   const totalUsers = mockUsers.length;
+  const verifiedUsers = mockUsers.filter((u) => u.verified).length;
 
   return (
     <div className='flex flex-1 flex-col space-y-4'>
@@ -40,11 +41,11 @@ export default function UsersPage() {
               </Badge>
             </CardAction>
           </CardHeader>
-          <CardFooter className='flex-col items-start gap-1.5 text-sm'>
-            <div className='line-clamp-1 flex gap-2 font-medium'>
+          <CardContent className='flex-col items-start gap-1.5 text-sm'>
+            <div className='line-clamp-1 text-muted-foreground'>
               Utilisateurs enregistres
             </div>
-          </CardFooter>
+          </CardContent>
         </Card>
         <Card className='@container/card'>
           <CardHeader>
@@ -58,15 +59,15 @@ export default function UsersPage() {
             <CardAction>
               <Badge variant='outline'>
                 <IconTrendingUp />
-                +{activeUsers}
+                +0.5%
               </Badge>
             </CardAction>
           </CardHeader>
-          <CardFooter className='flex-col items-start gap-1.5 text-sm'>
-            <div className='line-clamp-1 flex gap-2 font-medium'>
+          <CardContent className='flex-col items-start gap-1.5 text-sm'>
+            <div className='line-clamp-1 text-muted-foreground'>
               {((activeUsers / totalUsers) * 100).toFixed(1)}% du total
             </div>
-          </CardFooter>
+          </CardContent>
         </Card>
         <Card className='@container/card'>
           <CardHeader>
@@ -78,27 +79,33 @@ export default function UsersPage() {
               {inactiveUsers}
             </CardTitle>
           </CardHeader>
-          <CardFooter className='flex-col items-start gap-1.5 text-sm'>
-            <div className='line-clamp-1 flex gap-2 font-medium'>
+          <CardContent className='flex-col items-start gap-1.5 text-sm'>
+            <div className='line-clamp-1 text-muted-foreground'>
               {((inactiveUsers / totalUsers) * 100).toFixed(1)}% du total
             </div>
-          </CardFooter>
+          </CardContent>
         </Card>
         <Card className='@container/card'>
           <CardHeader>
             <CardDescription className='flex items-center gap-2'>
               <IconUsers className='h-4 w-4' />
-              Nouveaux ce mois
+              Utilisateurs verifies
             </CardDescription>
             <CardTitle className='text-2xl font-semibold tabular-nums @[250px]/card:text-3xl'>
-              {Math.round(totalUsers * 0.08)}
+              {verifiedUsers}
             </CardTitle>
+            <CardAction>
+              <Badge variant='outline'>
+                <IconTrendingUp />
+                +1.2%
+              </Badge>
+            </CardAction>
           </CardHeader>
-          <CardFooter className='flex-col items-start gap-1.5 text-sm'>
-            <div className='line-clamp-1 flex gap-2 font-medium'>
-              Inscriptions recentes
+          <CardContent className='flex-col items-start gap-1.5 text-sm'>
+            <div className='line-clamp-1 text-muted-foreground'>
+              Comptes verifies
             </div>
-          </CardFooter>
+          </CardContent>
         </Card>
       </div>
       <UserListingPage />

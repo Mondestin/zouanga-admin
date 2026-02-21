@@ -26,6 +26,7 @@ export function ReusableTableToolbar<TData>({
   rightSlot
 }: ReusableTableToolbarProps<TData>) {
   const [searchValue, setSearchValue] = useState('');
+  void table; // required by interface for API compatibility
 
   const handleSearch = (value: string) => {
     setSearchValue(value);
@@ -38,8 +39,6 @@ export function ReusableTableToolbar<TData>({
   const handleExport = () => {
     if (onExport) {
       onExport();
-    } else {
-      console.log('Exporting table...');
     }
   };
 

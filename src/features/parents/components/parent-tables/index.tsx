@@ -27,7 +27,7 @@ export function ParentTable<TData, TValue>({
       defaultPageSize={20}
       searchPlaceholder='Rechercher un parent...'
       exportButtonText='Exporter les parents'
-      exportButtonColor='#01631b'
+      exportButtonColor='#043535'
       onSearch={onSearch}
       toolbarRightSlot={toolbarRightSlot}
       paginationText={{

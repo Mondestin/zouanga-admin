@@ -49,7 +49,7 @@ export default function SosPage() {
           <CardHeader>
             <CardDescription className='flex items-center gap-2'>
               <IconCheck className='h-4 w-4' />
-              Resolus aujourd'hui
+              Resolus aujourd&apos;hui
             </CardDescription>
             <CardTitle className='text-2xl font-semibold tabular-nums @[250px]/card:text-3xl'>
               {resolvedToday}

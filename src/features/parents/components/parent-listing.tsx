@@ -12,6 +12,10 @@ export default function ParentListingPage() {
   const [subscriptionFilter, setSubscriptionFilter] = useState<
     'all' | ParentAccount['subscriptionStatus']
   >('all');
+  const [planFilter, setPlanFilter] = useState<'all' | ParentAccount['subscriptionPlan']>('all');
+  const [accountStatusFilter, setAccountStatusFilter] = useState<
+    'all' | ParentAccount['accountStatus']
+  >('all');
 
   const filteredParents = useMemo(() => {
     const search = searchValue.trim().toLowerCase();
@@ -32,9 +36,14 @@ export default function ParentListingPage() {
         subscriptionFilter === 'all' ||
         parent.subscriptionStatus === subscriptionFilter;
 
-      return matchesSearch && matchesStatus;
+      const matchesPlan = planFilter === 'all' || parent.subscriptionPlan === planFilter;
+
+      const matchesAccountStatus =
+        accountStatusFilter === 'all' || parent.accountStatus === accountStatusFilter;
+
+      return matchesSearch && matchesStatus && matchesPlan && matchesAccountStatus;
     });
-  }, [searchValue, subscriptionFilter]);
+  }, [searchValue, subscriptionFilter, planFilter, accountStatusFilter]);
 
   return (
     <div className='space-y-4'>
@@ -44,22 +53,55 @@ export default function ParentListingPage() {
         columns={columns}
         onSearch={setSearchValue}
         toolbarRightSlot={
-          <Select
-            value={subscriptionFilter}
-            onValueChange={(value) =>
-              setSubscriptionFilter(value as 'all' | ParentAccount['subscriptionStatus'])
-            }
-          >
-            <SelectTrigger className='w-[240px]'>
-              <SelectValue placeholder='Filtrer par abonnement' />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value='all'>Tous les statuts</SelectItem>
-              <SelectItem value='Actif'>Actif</SelectItem>
-              <SelectItem value='En retard'>En retard</SelectItem>
-              <SelectItem value='Suspendu'>Suspendu</SelectItem>
-            </SelectContent>
-          </Select>
+          <div className='flex gap-2'>
+            <Select
+              value={subscriptionFilter}
+              onValueChange={(value) =>
+                setSubscriptionFilter(value as 'all' | ParentAccount['subscriptionStatus'])
+              }
+            >
+              <SelectTrigger className='w-[200px]'>
+                <SelectValue placeholder='Statut abonnement' />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value='all'>Tous les statuts</SelectItem>
+                <SelectItem value='Actif'>Actif</SelectItem>
+                <SelectItem value='En retard'>En retard</SelectItem>
+                <SelectItem value='Suspendu'>Suspendu</SelectItem>
+              </SelectContent>
+            </Select>
+            <Select
+              value={planFilter}
+              onValueChange={(value) =>
+                setPlanFilter(value as 'all' | ParentAccount['subscriptionPlan'])
+              }
+            >
+              <SelectTrigger className='w-[180px]'>
+                <SelectValue placeholder='Type abonnement' />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value='all'>Tous les plans</SelectItem>
+                <SelectItem value='Weekly'>Weekly</SelectItem>
+                <SelectItem value='Bi-Weekly'>Bi-Weekly</SelectItem>
+                <SelectItem value='Monthly'>Monthly</SelectItem>
+              </SelectContent>
+            </Select>
+            <Select
+              value={accountStatusFilter}
+              onValueChange={(value) =>
+                setAccountStatusFilter(value as 'all' | ParentAccount['accountStatus'])
+              }
+            >
+              <SelectTrigger className='w-[180px]'>
+                <SelectValue placeholder='Statut compte' />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value='all'>Tous les comptes</SelectItem>
+                <SelectItem value='Actif'>Actif</SelectItem>
+                <SelectItem value='Suspendu'>Suspendu</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
         }
       />
     </div>

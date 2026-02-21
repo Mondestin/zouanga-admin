@@ -11,11 +11,12 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { UserAvatarProfile } from '@/components/user-avatar-profile';
 import { useRouter } from 'next/navigation';
+import { IconUser, IconSettings, IconCreditCard, IconLogout } from '@tabler/icons-react';
 
 // Mock user data - replace with your own user management
 const mockUser = {
-  fullName: 'User Name',
-  emailAddresses: [{ emailAddress: 'user@example.com' }],
+  fullName: 'Admin User',
+  emailAddresses: [{ emailAddress: 'admin@zouanga.com' }],
   imageUrl: undefined
 };
 
@@ -48,15 +49,22 @@ export function UserNav() {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem onClick={() => router.push('/dashboard/profile')}>
-            Profile
+            <IconUser className='mr-2 h-4 w-4' />
+            Mon profil
           </DropdownMenuItem>
-          <DropdownMenuItem>Billing</DropdownMenuItem>
-          <DropdownMenuItem>Settings</DropdownMenuItem>
-          <DropdownMenuItem>New Team</DropdownMenuItem>
+          <DropdownMenuItem onClick={() => router.push('/dashboard/profile/settings')}>
+            <IconSettings className='mr-2 h-4 w-4' />
+            Parametres
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => router.push('/dashboard/profile/billing')}>
+            <IconCreditCard className='mr-2 h-4 w-4' />
+            Facturation
+          </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          Sign Out
+        <DropdownMenuItem onClick={() => router.push('/login')}>
+          <IconLogout className='mr-2 h-4 w-4' />
+          Se deconnecter
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

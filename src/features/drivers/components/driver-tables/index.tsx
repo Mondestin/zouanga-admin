@@ -27,7 +27,7 @@ export function DriverTable<TData, TValue>({
       defaultPageSize={20}
       searchPlaceholder='Rechercher un chauffeur...'
       exportButtonText='Exporter les chauffeurs'
-      exportButtonColor='#01631b'
+      exportButtonColor='#043535'
       onSearch={onSearch}
       toolbarRightSlot={toolbarRightSlot}
       paginationText={{

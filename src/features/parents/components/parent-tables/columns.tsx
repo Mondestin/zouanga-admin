@@ -22,6 +22,50 @@ import { IconDotsVertical } from '@tabler/icons-react';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import type { ParentAccount } from '@/features/parents/types';
+
+function ParentActionsCell({ parent }: { parent: ParentAccount }) {
+  const router = useRouter();
+  const isSuspended = parent.accountStatus === 'Suspendu';
+  const label = isSuspended ? 'Reactiver' : 'Suspendre';
+  const Icon = isSuspended ? PlayCircle : PauseCircle;
+  return (
+    <DropdownMenu modal={false}>
+      <DropdownMenuTrigger asChild>
+        <Button variant='ghost' className='h-8 w-8 p-0'>
+          <span className='sr-only'>Ouvrir le menu</span>
+          <IconDotsVertical className='h-4 w-4' />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align='end'>
+        <DropdownMenuItem onClick={() => router.push(`/dashboard/parents/${parent.id}`)}>
+          <CheckCircle2 className='mr-2 h-4 w-4' />
+          Voir details parent
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() =>
+            toast.success(`${label} le compte de ${parent.name} (action de demonstration)`)
+          }
+        >
+          <Icon className='mr-2 h-4 w-4' />
+          {label}
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => toast.info(`Notes support: ${parent.supportNotes}`)}>
+          <CheckCircle2 className='mr-2 h-4 w-4' />
+          Voir notes support
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() =>
+            toast.info(`Historique suivi de ${parent.name} (action de demonstration)`)
+          }
+        >
+          <CheckCircle2 className='mr-2 h-4 w-4' />
+          Historique suivi
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
 
 const getInitials = (name: string) => {
   return name
@@ -150,58 +194,6 @@ export const columns: ColumnDef<any>[] = [
   {
     id: 'actions',
     header: 'Actions',
-    cell: ({ row }) => {
-      const router = useRouter();
-      const isSuspended = row.original.accountStatus === 'Suspendu';
-      const label = isSuspended ? 'Reactiver' : 'Suspendre';
-      const Icon = isSuspended ? PlayCircle : PauseCircle;
-
-      return (
-        <DropdownMenu modal={false}>
-          <DropdownMenuTrigger asChild>
-            <Button variant='ghost' className='h-8 w-8 p-0'>
-              <span className='sr-only'>Ouvrir le menu</span>
-              <IconDotsVertical className='h-4 w-4' />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align='end'>
-            <DropdownMenuItem
-              onClick={() => router.push(`/dashboard/parents/${row.original.id}`)}
-            >
-              <CheckCircle2 className='mr-2 h-4 w-4' />
-              Voir details parent
-            </DropdownMenuItem>
-            <DropdownMenuItem
-              onClick={() =>
-                toast.success(
-                  `${label} le compte de ${row.original.name} (action de demonstration)`
-                )
-              }
-            >
-              <Icon className='mr-2 h-4 w-4' />
-              {label}
-            </DropdownMenuItem>
-            <DropdownMenuItem
-              onClick={() =>
-                toast.info(`Notes support: ${row.original.supportNotes}`)
-              }
-            >
-              <CheckCircle2 className='mr-2 h-4 w-4' />
-              Voir notes support
-            </DropdownMenuItem>
-            <DropdownMenuItem
-              onClick={() =>
-                toast.info(
-                  `Historique suivi de ${row.original.name} (action de demonstration)`
-                )
-              }
-            >
-              <CheckCircle2 className='mr-2 h-4 w-4' />
-              Historique suivi
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      );
-    }
+    cell: ({ row }) => <ParentActionsCell parent={row.original} />
   }
 ];

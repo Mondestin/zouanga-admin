@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 // Middleware without authentication
+// eslint-disable-next-line @typescript-eslint/no-unused-vars -- req required by Next.js middleware signature
 export default function middleware(req: NextRequest) {
-  // Add any custom middleware logic here if needed
   return NextResponse.next();
 }
 

@@ -38,7 +38,6 @@ import {
   IconUsers,
   IconShieldCheck,
   IconBug,
-  IconMenu,
   IconCar,
   IconBus,
   IconSchool,

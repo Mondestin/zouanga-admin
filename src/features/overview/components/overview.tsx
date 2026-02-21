@@ -30,7 +30,7 @@ export default function OverViewPage() {
         </div>
         <Tabs defaultValue='overview' className='space-y-4'>
           <TabsList>
-            <TabsTrigger value='overview'>Vue d'ensemble</TabsTrigger>
+            <TabsTrigger value='overview'>Vue d&apos;ensemble</TabsTrigger>
             <TabsTrigger value='analytics' disabled>
               Analytique
             </TabsTrigger>

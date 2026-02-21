@@ -20,26 +20,16 @@ export default function ParentDetailsView({ parent }: { parent: ParentAccount })
   const [isSubscriptionDialogOpen, setIsSubscriptionDialogOpen] = useState(false);
   const [isAccountDialogOpen, setIsAccountDialogOpen] = useState(false);
   const [paymentPage, setPaymentPage] = useState(1);
-  const [incidentPage, setIncidentPage] = useState(1);
 
   const paymentPageCount = Math.max(
     1,
     Math.ceil(parent.paymentRecords.length / PAGE_SIZE)
-  );
-  const incidentPageCount = Math.max(
-    1,
-    Math.ceil(parent.incidentRecords.length / PAGE_SIZE)
   );
 
   const visiblePayments = useMemo(() => {
     const start = (paymentPage - 1) * PAGE_SIZE;
     return parent.paymentRecords.slice(start, start + PAGE_SIZE);
   }, [parent.paymentRecords, paymentPage]);
-
-  const visibleIncidents = useMemo(() => {
-    const start = (incidentPage - 1) * PAGE_SIZE;
-    return parent.incidentRecords.slice(start, start + PAGE_SIZE);
-  }, [parent.incidentRecords, incidentPage]);
 
   return (
     <div className='flex flex-1 flex-col space-y-8'>

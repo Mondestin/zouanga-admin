@@ -1,0 +1,11 @@
+./src/features/auth/components/sign-in-view.tsx:101:14
+Type error: Type '{ children: Element; watch: UseFormWatch<{ email: string; password: string; }>; getValues: UseFormGetValues<{ email: string; password: string; }>; ... 13 more ...; subscribe: UseFormSubscribe<...>; }' is missing the following properties from type '{ children: ReactNode; onSubmit: (data: any) => void; form: UseFormReturn<any, any, any>; className?: string | undefined; }': onSubmit, form
+
+   99 |               </p>
+  100 |             </div>
+> 101 |             <Form {...form}>
+      |              ^
+  102 |               <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-4'>
+  103 |                 <FormField
+  104 |                   control={form.control}
+Next.js build worker exited with code: 1 and signal: null

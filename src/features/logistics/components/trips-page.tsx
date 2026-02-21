@@ -35,7 +35,7 @@ export default function TripsPage() {
             <CardAction>
               <Badge variant='outline'>
                 <IconTrendingUp />
-                {onTimeRate}% a l'heure
+                {onTimeRate}% a l&apos;heure
               </Badge>
             </CardAction>
           </CardHeader>
@@ -89,7 +89,7 @@ export default function TripsPage() {
           </CardHeader>
           <CardFooter className='flex-col items-start gap-1.5 text-sm'>
             <div className='line-clamp-1 flex gap-2 font-medium'>
-              Performance aujourd'hui
+              Performance aujourd&apos;hui
             </div>
           </CardFooter>
         </Card>

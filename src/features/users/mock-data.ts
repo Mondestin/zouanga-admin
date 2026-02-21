@@ -7,7 +7,11 @@ export const mockUsers: User[] = [
     email: 'alexisoboa@gmail.com',
     phone: '+33659433007',
     status: 'active',
-    registrationDate: '10 mai 2025'
+    role: 'Administrateur',
+    verified: true,
+    registrationDate: '10 mai 2025',
+    lastLogin: 'Il y a 2 heures',
+    loginCount: 145
   },
   {
     id: 2,
@@ -15,7 +19,11 @@ export const mockUsers: User[] = [
     email: 'amine-elabbassi@outlook.fr',
     phone: '+33767604407',
     status: 'active',
-    registrationDate: '10 mai 2025'
+    role: 'Moderateur',
+    verified: true,
+    registrationDate: '10 mai 2025',
+    lastLogin: 'Il y a 5 heures',
+    loginCount: 89
   },
   {
     id: 3,
@@ -23,7 +31,11 @@ export const mockUsers: User[] = [
     email: 'bousbiabenhadjvtc@gmail.com',
     phone: '+33667029815',
     status: 'active',
-    registrationDate: '10 mai 2025'
+    role: 'Support',
+    verified: true,
+    registrationDate: '10 mai 2025',
+    lastLogin: 'Il y a 1 jour',
+    loginCount: 67
   },
   {
     id: 4,
@@ -31,7 +43,11 @@ export const mockUsers: User[] = [
     email: 'Prestigecparis@gmail.com',
     phone: '+33630740436',
     status: 'active',
-    registrationDate: '10 mai 2025'
+    role: 'Utilisateur',
+    verified: false,
+    registrationDate: '10 mai 2025',
+    lastLogin: 'Il y a 3 jours',
+    loginCount: 23
   },
   {
     id: 5,
@@ -39,15 +55,23 @@ export const mockUsers: User[] = [
     email: 'franck.meaupin@gmail.com',
     phone: '+33658945531',
     status: 'active',
-    registrationDate: '10 mai 2025'
+    role: 'Utilisateur',
+    verified: true,
+    registrationDate: '10 mai 2025',
+    lastLogin: 'Il y a 1 heure',
+    loginCount: 112
   },
   {
     id: 6,
     name: 'Ibrahim Siby',
     email: 'Sibybama223@gmail.com',
     phone: '+33611227420',
-    status: 'active',
-    registrationDate: '10 mai 2025'
+    status: 'inactive',
+    role: 'Utilisateur',
+    verified: false,
+    registrationDate: '10 mai 2025',
+    lastLogin: 'Il y a 15 jours',
+    loginCount: 8
   },
   {
     id: 7,
@@ -55,7 +79,11 @@ export const mockUsers: User[] = [
     email: 'Ivanmendesvtc@gmail.com',
     phone: '+33787925518',
     status: 'active',
-    registrationDate: '10 mai 2025'
+    role: 'Utilisateur',
+    verified: true,
+    registrationDate: '10 mai 2025',
+    lastLogin: 'Il y a 30 min',
+    loginCount: 156
   },
   {
     id: 8,
@@ -63,15 +91,23 @@ export const mockUsers: User[] = [
     email: 'jawed.boukacem@gmx.fr',
     phone: '+33783326599',
     status: 'active',
-    registrationDate: '10 mai 2025'
+    role: 'Moderateur',
+    verified: true,
+    registrationDate: '10 mai 2025',
+    lastLogin: 'Il y a 4 heures',
+    loginCount: 98
   },
   {
     id: 9,
     name: 'Karim M Barek',
     email: 'km.mbarek@gmail.com',
     phone: '+33609603509',
-    status: 'active',
-    registrationDate: '10 mai 2025'
+    status: 'suspended',
+    role: 'Utilisateur',
+    verified: false,
+    registrationDate: '10 mai 2025',
+    lastLogin: 'Il y a 20 jours',
+    loginCount: 5
   },
   {
     id: 10,
@@ -79,7 +115,11 @@ export const mockUsers: User[] = [
     email: 'alyouika06@icloud.com',
     phone: '+33772331041',
     status: 'active',
-    registrationDate: '10 mai 2025'
+    role: 'Utilisateur',
+    verified: true,
+    registrationDate: '10 mai 2025',
+    lastLogin: 'Il y a 2 heures',
+    loginCount: 134
   },
   {
     id: 11,
@@ -87,7 +127,11 @@ export const mockUsers: User[] = [
     email: 'jmiaianas2010@gmail.com',
     phone: '+33667959302',
     status: 'active',
-    registrationDate: '10 mai 2025'
+    role: 'Support',
+    verified: true,
+    registrationDate: '10 mai 2025',
+    lastLogin: 'Il y a 6 heures',
+    loginCount: 76
   },
   {
     id: 12,
@@ -95,7 +139,11 @@ export const mockUsers: User[] = [
     email: 'mohandsari@outlook.fr',
     phone: '+33629380730',
     status: 'active',
-    registrationDate: '10 mai 2025'
+    role: 'Utilisateur',
+    verified: false,
+    registrationDate: '10 mai 2025',
+    lastLogin: 'Il y a 1 semaine',
+    loginCount: 45
   },
   {
     id: 13,
@@ -103,7 +151,11 @@ export const mockUsers: User[] = [
     email: 'Rayane9498@hotmail.fr',
     phone: '+33768372551',
     status: 'active',
-    registrationDate: '10 mai 2025'
+    role: 'Utilisateur',
+    verified: true,
+    registrationDate: '10 mai 2025',
+    lastLogin: 'Il y a 1 heure',
+    loginCount: 167
   }
 ];
 

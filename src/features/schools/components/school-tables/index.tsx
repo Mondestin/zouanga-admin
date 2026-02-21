@@ -27,7 +27,7 @@ export function SchoolTable<TData, TValue>({
       defaultPageSize={20}
       searchPlaceholder='Rechercher une ecole...'
       exportButtonText='Exporter les ecoles'
-      exportButtonColor='#01631b'
+      exportButtonColor='#043535'
       onSearch={onSearch}
       toolbarRightSlot={toolbarRightSlot}
       paginationText={{

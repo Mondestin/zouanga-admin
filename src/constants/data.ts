@@ -38,14 +38,6 @@ export const navItems: NavItem[] = [
     items: []
   },
   {
-    title: 'Produits',
-    url: '/dashboard/products',
-    icon: 'product',
-    shortcut: ['p', 'r'],
-    isActive: false,
-    items: []
-  },
-  {
     title: 'Chauffeurs',
     url: '/dashboard/drivers',
     icon: 'driver',
